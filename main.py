@@ -88,15 +88,21 @@ def available_check(rnd_list):
     return available
 
 
-while not is_win and hidden_number != [0]:
-    guess = list(input(f"Turn {turns}: Please, input your {length}-digit guess "))
-    if available_check(guess):
-        try:
-            guess_check(guess)
-            turns += 1
-        except ValueError:
+if __name__ == "__main__":
+
+    while not is_win and hidden_number != [0]:
+        guess = list(input(f"Turn {turns}: Please, input your {length}-digit guess "))
+        if available_check(guess):
+            try:
+                guess_check(guess)
+                turns += 1
+            except ValueError:
+                print("incorrect input! Try again")
+        else:
             print("incorrect input! Try again")
-    else:
-        print("incorrect input! Try again")
-if is_win:
-    print(f"Amazing! You beat me in {turns-1} turns!")
+    if is_win:
+        print(f"Amazing! You beat me in {turns-1} turns!")
+
+
+
+
